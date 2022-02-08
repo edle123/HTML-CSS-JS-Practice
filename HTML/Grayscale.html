@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Grayscale</title>
+  <link rel="stylesheet" href="../CSS/styleGrayscale.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<script src="https://www.dukelearntoprogram.com/course1/common/js/image/SimpleImage.js">
+</script>
+<h1>Upload and Display an Image</h1>
+<canvas id="can1">
+</canvas>
+<canvas id="can2">
+</canvas>
+<p>
+  <!--Filename:
+<input type="text" id="tinput"/>
+<input type="button" value="Upload" onclick"upload()"/>-->
+  <input type="file" multiple="false" accept="image/*" id="finput" onchange="upload()"/>
+  <br>
+  <input type="button" value="Make Gray" onclick="makeGray()">
+</p>
+<!-- partial -->
+  <script  src="../JavaScript/scriptGrayscale.js"></script>
+
+</body>
+</html>
