@@ -1,0 +1,27 @@
+body {
+  background : pink;
+  style : times new roman 14;
+}
+h1{
+  text-align: center;
+}
+div{
+  color : blueviolet;
+}
+/*
+.gameLi{
+  color : red;
+}
+*/
+ul ul{
+  color : red;
+}
+.artistLi{
+  color : green;
+}
+.songLi{
+  color : orange
+}
+#artist{
+  color : purple;
+}

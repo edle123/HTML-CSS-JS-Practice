@@ -1,0 +1,43 @@
+body{
+  /*background : plum;*/
+}
+#d1{
+  /*color : green;*/
+  font-family : sans-serif;
+  font-size : xx-large;
+  /*border : medium dashed;
+  padding-bottom : 10px;
+  padding-left : 15px;
+  margin-top : 10px;
+  margin-bottom : 10px;*/
+}
+#d2{
+  /*color : blue;*/
+  font-family : monospace;
+  font-size : 150%;
+  /*border : 2px dotted;
+  padding-top : 20px;
+  padding-right : 20px;*/
+  /*margin-left : 5%;
+  margin-right : 5%;*/
+}
+h1{
+  /*color : purple;*/
+  font-family : serif;
+  font-size : xxx-large;
+  border : solid;
+  padding : 30px;
+  margin : 5%;
+}
+.c1{
+  background : orange;
+}
+.c2{
+  background : green;
+}
+.c3{
+  background : purple;
+}
+.c4{
+  background : red;
+}
