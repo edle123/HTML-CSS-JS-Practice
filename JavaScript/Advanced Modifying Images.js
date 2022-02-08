@@ -1,6 +1,5 @@
 //Advanced Modifying Images
 //Part 1
-/*
 var fgImage = new SimpleImage("drewRobert.png");
 var bgImage = new SimpleImage("dinos.png");
 var newImage = new SimpleImage(fgImage.getWidth(), fgImage.getHeight());
@@ -19,7 +18,6 @@ for(var pixel of fgImage.values()){
     }
 }
 print(newImage);
-*/
 //Part 2
 
 var img = new SimpleImage(200,200);
