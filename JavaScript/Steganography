@@ -1,0 +1,127 @@
+// write your code here
+function crop(image, width, height){
+    var cropImage=new SimpleImage(image);
+    cropImage.setSize(width,height);
+    for ( var pixel of cropImage.values()){
+        var x = pixel.getX();
+        var y = pixel.getY();
+        if(x<image.getWidth() && y<image.getHeight()){
+            var pixel2 = image.getPixel(x,y);
+            cropImage.setPixel(x,y,pixel2);
+        }
+        else if(x>=image.getWidth() || y>=image.getHeight()){
+            pixel.setRed(0);
+            pixel.setGreen(0);
+            pixel.setBlue(0);
+            cropImage.setPixel(x,y,pixel);
+        }
+    }
+    return cropImage;
+}
+
+function clearBits(pixelVal){
+    var x = Math.floor(pixelVal/16)*16;
+    return x;
+}
+function chop2Hide(image){
+    var chopImage = new SimpleImage(image);
+    for (var pixel of chopImage.values()){
+        pixel.setRed(clearBits(pixel.getRed()));
+        pixel.setGreen(clearBits(pixel.getGreen()));
+        pixel.setBlue(clearBits(pixel.getBlue()));
+    }
+    return chopImage;
+}
+
+function hideBits(pixelVal){
+    var x = Math.floor(pixelVal/16);
+    return x;
+}
+
+function shift(image){
+    var hideImage = new SimpleImage(image);
+    for(var pixel of hideImage.values()){
+        pixel.setRed(hideBits(pixel.getRed()));
+        pixel.setGreen(hideBits(pixel.getGreen()));
+        pixel.setBlue(hideBits(pixel.getBlue()));
+    }
+    return hideImage;
+}
+
+function newpv(p,q){
+    var sum = p+q;
+    if(sum>255){
+        print("Invalid value");
+    }
+    else{
+        return sum;
+    }
+}
+
+function combine(image1,image2){
+    var image3 = new SimpleImage(image1.getWidth(),image1.getHeight());
+    var image4 = crop(image2,image3.getWidth(),image3.getHeight());
+    for(var pixel3 of image3.values()){
+        var x = pixel3.getX();
+        var y = pixel3.getY();
+        var pixel = image1.getPixel(x,y);
+        var pixel4 = image4.getPixel(x,y);
+        var newRed = newpv(pixel.getRed(),pixel4.getRed());
+        var newGreen = newpv(pixel.getGreen(),pixel4.getGreen());
+        var newBlue = newpv(pixel.getBlue(),pixel4.getBlue());
+        pixel3.setRed(newRed);
+        pixel3.setGreen(newGreen);
+        pixel3.setBlue(newBlue);
+    }
+    return image3;
+}
+
+var pic= new SimpleImage("smallpanda.png");
+var pix = pic.getPixel(50,60);
+var pic2 = new SimpleImage("smalllion.jpg");
+var pix2 = pic2.getPixel(50,60);
+
+/*print(pic);
+print(pix);
+print(pic.getWidth(),pic.getHeight());*/
+
+var cropPic = crop(pic,200,200);
+var cropPix = cropPic.getPixel(50,60);
+//var cropped = crop(pic,300,300);
+
+/*print(cropPic);
+print(cropPix);
+print(cropPic.getWidth(),cropPic.getHeight());
+print(cropped);*/
+
+var start = chop2Hide(pic);
+//var start2 = chop2Hide(cropPic);
+var startPix = start.getPixel(50,60);
+//var start2Pix = start2.getPixel(50,60);
+
+//print(start);
+//print(startPix);
+//print(start.getWidth(),start.getHeight());
+/*print(start2);
+print(start2Pix);
+print(start2.getWidth(),start2.getHeight());*/
+
+var hidden = shift(pic2);
+var hiddenPix = hidden.getPixel(50,60);
+
+/*print(pic2);
+print(pix2);
+print(pic2.getWidth(),pic2.getHeight());
+print(hidden);
+print(hiddenPix);*/
+
+var encrypt = combine(start,hidden);
+var message = encrypt.getPixel(50,60);
+
+print(pic);
+print(start);
+print(encrypt);
+print(pix);
+print(startPix);
+print(hiddenPix);
+print(message);
